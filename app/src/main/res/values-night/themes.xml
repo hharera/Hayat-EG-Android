@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Dwaa" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/app_yellow</item>
+        <item name="colorPrimaryVariant">#FAD223</item>
+        <item name="colorPrimaryDark">#DCBE0F</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorSurface">#F1F0F2</item>
+        <item name="colorOnPrimary">#DCDCDC</item>
+    </style>
+</resources>

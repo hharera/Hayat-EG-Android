@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Dwaa" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/app_yellow</item>
+        <item name="colorPrimaryVariant">#FAD223</item>
+        <item name="colorPrimaryDark">#DCBE0F</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorSurface">#F1F0F2</item>
+        <item name="colorOnPrimary">#DCDCDC</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="App_OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="startIconTint">@color/app_yellow</item>
+        <item name="startIconTintMode">multiply</item>
+    </style>
+
+    <style name="Dwaa_TextField">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lines">1</item>
+        <item name="android:layout_margin">@dimen/_10sdp</item>
+        <item name="android:imeActionId">@integer/btm_to</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="autoscroll">
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:scrollHorizontally">true</item>
+    </style>
+</resources>

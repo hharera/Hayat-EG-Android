@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        android:id="@+id/search_location"
+        style="@style/MaterialSearchBarLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mt_hintColor="@color/black"
+        app:mt_maxSuggestionsCount="3"
+        app:mt_placeholder="@string/search_location_hint"
+        app:mt_hint="@string/search_location_hint"
+        app:mt_placeholderColor="@color/app_grey"
+        app:mt_roundedSearchBarEnabled="false"
+        app:mt_textColor="@color/black" />
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/confirm"
+        app:layout_constraintTop_toBottomOf="@+id/search_location"
+        app:layout_constraintVertical_bias="1.0"
+        tools:context=".ui.location.MapsFragment"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm"
+        android:textColor="@color/black"
+        android:enabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/map"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
