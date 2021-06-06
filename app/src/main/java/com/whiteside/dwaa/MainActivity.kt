@@ -25,13 +25,11 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bind = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        bind = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(bind.root)
 
         GlobalScope.launch(Dispatchers.Main) {
-            for (i in 1..4) {
-                delay(600)
-                bind.pill.rotation += 90
-            }
+            delay(3000)
             check()
         }
     }
