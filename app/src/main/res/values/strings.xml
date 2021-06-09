@@ -64,4 +64,8 @@
     <string name="empty_image_error">اضف صورة للدواء</string>
     <string name="uploading_medicine">يتم اضافة عنصر جديد</string>
     <string name="select_medicine_image">اضف صورة الدواء</string>
+    <string name="internet_problem_message">حدثت مشكلة في الاتصال</string>
+    <string name="try_again">أعد المحاولة</string>
+    <string name="back_connected">معاودة الاتصال</string>
+    <string name="went_disconnected">تم قطع الاتصال</string>
 </resources>

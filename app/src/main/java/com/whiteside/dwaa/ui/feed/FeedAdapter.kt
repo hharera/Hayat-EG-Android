@@ -19,9 +19,9 @@ class FeedAdapter(private var list: List<FeedMedicine>) : RecyclerView.Adapter<V
         var medicineViewModel = MedicineViewModel()
 
         fun updateUI(feedMedicine: FeedMedicine) {
-            bind.date.text = Time.timeFromNow(feedMedicine.addingTime)
+            bind.addTime.text = Time.timeFromNowInString(feedMedicine.addingTime)
             bind.expireDate.text = Time.convertTimestampToString(feedMedicine.expireDate)
-            bind.price.text = feedMedicine.price.toString()
+            bind.price.text = feedMedicine.price.toString().plus(" جنيه")
             bind.medicineName.text = feedMedicine.name
             updateLocation(feedMedicine.location)
             updateImage(feedMedicine.imageUrl)
@@ -42,9 +42,10 @@ class FeedAdapter(private var list: List<FeedMedicine>) : RecyclerView.Adapter<V
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        CardViewMedicineProductBinding.inflate(LayoutInflater.from(parent.context)).let {
-            return ViewHolder(it)
-        }
+        CardViewMedicineProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            .let {
+                return ViewHolder(it)
+            }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

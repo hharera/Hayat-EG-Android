@@ -11,4 +11,5 @@
     <color name="app_blue">#20ADDC</color>
     <color name="app_grey">#707070</color>
     <color name="app_grey_light">#CB707070</color>
+    <color name="snack_bar_back">#CB707070</color>
 </resources>

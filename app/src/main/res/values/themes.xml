@@ -11,6 +11,14 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="Splash" parent="Theme.Dwaa">
+        <item name="colorPrimaryDark">@color/white</item>
+    </style>
+
+    <style name="Home" parent="Theme.Dwaa">
+        <item name="colorPrimaryDark">@color/app_blue</item>
+    </style>
+
     <style name="App_OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="startIconTint">@color/app_yellow</item>
         <item name="startIconTintMode">multiply</item>

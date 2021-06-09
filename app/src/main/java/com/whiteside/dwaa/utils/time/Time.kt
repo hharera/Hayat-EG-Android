@@ -14,25 +14,25 @@ class Time {
             return format.format(time.toDate())
         }
 
-        fun timeFromNow(timestamp: Timestamp): String {
+        fun timeFromNowInString(timestamp: Timestamp): String {
             val seconds = Timestamp.now().seconds - timestamp.seconds
             return if (seconds >= TimeConstants.secondeInYear) {
                 val years = seconds / TimeConstants.secondeInYear
-                "$years years ago"
+                "منذ ".plus(years).plus(" سنوات")
             } else if (seconds >= TimeConstants.secondeInMonth) {
                 val months = seconds / TimeConstants.secondeInMonth
-                "$months months ago"
+                "منذ ".plus(months).plus(" شهور ")
             } else if (seconds >= TimeConstants.secondeInDay) {
                 val days = seconds / TimeConstants.secondeInDay
-                "$days days ago"
+                "منذ ".plus(days).plus(" ايام ")
             } else if (seconds >= TimeConstants.secondeInHour) {
                 val hours = seconds / TimeConstants.secondeInHour
-                "$hours hours ago"
+                "منذ ".plus(hours).plus(" ساعات")
             } else if (seconds >= TimeConstants.secondeInMinute) {
                 val minutes = seconds / TimeConstants.secondeInMinute
-                "$minutes minutes ago"
+                "منذ ".plus(minutes).plus(" دقائق")
             } else {
-                "seconds ago"
+                "منذ ثوان"
             }
         }
     }

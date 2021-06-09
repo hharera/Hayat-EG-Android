@@ -1,66 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    app:cardCornerRadius="5dp">
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="5dp"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="0.7dp"
+    app:cardMaxElevation="1dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/_5sdp"
-        android:padding="@dimen/_5sdp">
+        android:layout_height="match_parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circleImageView"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:src="@drawable/profile"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:scaleType="centerCrop"
+            app:civ_border_color="@color/app_yellow"
+            app:civ_border_width="1dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.4" />
 
         <TextView
             android:id="@+id/medicine_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:text="اسم الدواء"
+            android:fontFamily="@font/cairo_bold"
+            android:gravity="end"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/add_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:text="3 ي"
-            android:textColor="@color/app_grey_light"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/harmattan"
+            android:padding="3dp"
+            android:textColor="@color/app_grey"
+            android:textSize="12sp"
+            android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/medicine_name" />
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_200sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:scaleType="fitCenter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/constraintLayout3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image">
@@ -72,23 +73,26 @@
                 android:src="@drawable/price_tag"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.05"
                 app:tint="@color/app_yellow" />
 
             <TextView
                 android:id="@+id/price"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
+                android:textAlignment="viewStart"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/price_tag"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.25" />
 
             <ImageView
                 android:id="@+id/expire_date_tag"
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="@dimen/_15sdp"
-                android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginStart="5dp"
                 android:src="@drawable/expire_date"
                 app:layout_constraintStart_toEndOf="@id/price"
                 app:layout_constraintTop_toTopOf="parent"
@@ -96,22 +100,23 @@
 
             <TextView
                 android:id="@+id/expire_date"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginStart="5dp"
                 android:ellipsize="end"
                 android:maxLength="10"
                 android:maxLines="1"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/expire_date_tag"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.25" />
 
             <ImageView
                 android:id="@+id/location_tag"
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="@dimen/_15sdp"
-                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginStart="5dp"
                 android:src="@drawable/marker"
                 app:layout_constraintStart_toEndOf="@id/expire_date"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -119,15 +124,15 @@
             <TextView
                 android:id="@+id/location"
                 style="@style/autoscroll"
-                android:layout_width="@dimen/_70sdp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginStart="5dp"
                 android:ellipsize="end"
-                android:maxLength="10"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/location_tag"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

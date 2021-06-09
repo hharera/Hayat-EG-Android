@@ -28,21 +28,31 @@ class MainActivity : BaseActivity() {
         bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
 
-        GlobalScope.launch(Dispatchers.Main) {
-            delay(3000)
-            check()
+        //TODO remove comment after development
+        goToHomeActivity()
+//        GlobalScope.launch(Dispatchers.Main) {
+//            delay(3000)
+//            check()
+//        }
+    }
+
+    private fun checkLogin() {
+        if (authManager.getCurrentUser() != null) {
+            goToHomeActivity()
+        } else {
+            goToLoginActivity()
         }
     }
 
-    private fun check() {
-        if (authManager.getCurrentUser() != null) {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-            finish()
-        } else {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+    private fun goToLoginActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun goToHomeActivity() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
