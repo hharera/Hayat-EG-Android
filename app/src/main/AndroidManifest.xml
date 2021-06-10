@@ -18,6 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Dwaa">
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:theme="@style/Home" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -26,12 +29,13 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".ui.home.HomeActivity" android:theme="@style/Home"/>
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:theme="@style/Home" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.location.ChooseLocationActivity" />
         <activity android:name=".ui.login.confirm.ConfirmLoginActivity" />
         <activity android:name=".ui.connection.NoInternetConnection" />
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/Splash">
@@ -42,4 +46,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
