@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.whiteside.dwaa.R
 import com.whiteside.dwaa.databinding.ActivityLoginBinding
 import com.whiteside.dwaa.ui.login.confirm.ConfirmLoginActivity
-import com.whiteside.dwaa.utils.IntentConstants
+import com.whiteside.dwaa.common.ExtrasConstants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
         bind.next.setOnClickListener {
             val phoneNumber = bind.phoneNumber.text.toString()
             val intent = Intent(this, ConfirmLoginActivity::class.java).apply {
-                putExtra(IntentConstants.phoneNumber, "+20${phoneNumber}")
+                putExtra(ExtrasConstants.phoneNumber, "+20${phoneNumber}")
             }
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right)

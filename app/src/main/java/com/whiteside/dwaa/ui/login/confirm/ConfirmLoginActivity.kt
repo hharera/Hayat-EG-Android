@@ -13,7 +13,7 @@ import com.whiteside.dwaa.common.BaseActivity
 import com.whiteside.dwaa.custom.PromptCodeDialog
 import com.whiteside.dwaa.databinding.ActivityLoginConfirmBinding
 import com.whiteside.dwaa.ui.home.HomeActivity
-import com.whiteside.dwaa.utils.IntentConstants
+import com.whiteside.dwaa.common.ExtrasConstants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -36,7 +36,7 @@ class ConfirmLoginActivity : BaseActivity() {
         bind = ActivityLoginConfirmBinding.inflate(layoutInflater)
         setContentView(bind.root)
 
-        phoneNumber = intent.extras!!.getString(IntentConstants.phoneNumber)!!
+        phoneNumber = intent.extras!!.getString(ExtrasConstants.phoneNumber)!!
         observeCode()
         showWaitingDialog()
         sendVerificationCode(phoneNumber)

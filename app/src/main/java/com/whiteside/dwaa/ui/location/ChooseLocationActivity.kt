@@ -29,7 +29,7 @@ import com.whiteside.dwaa.R
 import com.whiteside.dwaa.common.BaseActivity
 import com.whiteside.dwaa.common.onSearchConfirmed
 import com.whiteside.dwaa.databinding.ActivityChooseLocationBinding
-import com.whiteside.dwaa.ui.commom.ExtrasConstants
+import com.whiteside.dwaa.common.ExtrasConstants
 import java.io.IOException
 import java.lang.Exception
 import java.util.*

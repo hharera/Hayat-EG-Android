@@ -18,7 +18,7 @@ import com.whiteside.dwaa.R
 import com.whiteside.dwaa.common.BaseFragment
 import com.whiteside.dwaa.common.afterTextChanged
 import com.whiteside.dwaa.databinding.FragmentAddMedicineBinding
-import com.whiteside.dwaa.ui.commom.ExtrasConstants.LOCATION_RESULT
+import com.whiteside.dwaa.common.ExtrasConstants.LOCATION_RESULT
 import com.whiteside.dwaa.ui.location.ChooseLocationActivity
 import com.whiteside.dwaa.utils.BitmapUtils
 import com.whiteside.dwaa.utils.time.Time
