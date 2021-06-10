@@ -12,4 +12,5 @@ interface MedicineRepository {
     fun getNewMedicineId(medicineCategory: String): String
     fun uploadMedicineImage(image: Bitmap, medicineCategory: String, medicineId: String): UploadTask
     fun getMedicines(limit: Int, underPrice: Float): Task<QuerySnapshot>
+    fun searchMedicines(searchWord: String, limit: Long): Task<QuerySnapshot>
 }
