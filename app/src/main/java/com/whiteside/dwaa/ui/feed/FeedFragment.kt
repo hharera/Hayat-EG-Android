@@ -1,24 +1,24 @@
 package com.whiteside.dwaa.ui.feed
 
-import SpaceItemDecoration
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DefaultItemAnimator
 import com.google.android.material.snackbar.Snackbar
 import com.mindorks.example.coroutines.utils.Status
 import com.whiteside.dwaa.R
+import com.whiteside.dwaa.adapter.MedicinesAdapter
 import com.whiteside.dwaa.common.BaseFragment
 import com.whiteside.dwaa.common.ConnectionLiveData
 import com.whiteside.dwaa.common.onSearchConfirmed
 import com.whiteside.dwaa.databinding.FragmentFeedBinding
 import com.whiteside.dwaa.ui.connection.NoInternetConnection
+import com.whiteside.dwaa.ui.search.SearchActivity
 import com.whiteside.dwaa.utils.Connectivity
+import com.whiteside.dwaa.common.ExtrasConstants
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -32,7 +32,7 @@ class FeedFragment : BaseFragment() {
 
     private lateinit var bind: FragmentFeedBinding
     private lateinit var feedViewModel: FeedViewModel
-    private var medicinesAdapter = FeedAdapter(arrayListOf())
+    private var medicinesAdapter = MedicinesAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,8 +60,14 @@ class FeedFragment : BaseFragment() {
 
     private fun setupListeners() {
         bind.searchBar.onSearchConfirmed {
-//            TODO not implemented
+            goSearch(it)
         }
+    }
+
+    private fun goSearch(searchWord: String) {
+        val intent = Intent(context, SearchActivity::class.java)
+        intent.putExtra(ExtrasConstants.searchWord, searchWord)
+        startActivity(intent)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -100,7 +106,11 @@ class FeedFragment : BaseFragment() {
                 .setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.app_blue))
                 .show()
         } else {
-            Snackbar.make(bind.medicines, getString(R.string.went_disconnected), Snackbar.LENGTH_LONG)
+            Snackbar.make(
+                bind.medicines,
+                getString(R.string.went_disconnected),
+                Snackbar.LENGTH_LONG
+            )
                 .setBackgroundTint(resources.getColor(R.color.app_blue))
                 .show()
         }

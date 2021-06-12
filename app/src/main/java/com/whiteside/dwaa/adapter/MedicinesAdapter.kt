@@ -1,17 +1,19 @@
-package com.whiteside.dwaa.ui.feed
+package com.whiteside.dwaa.adapter
 
 import android.location.Geocoder
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.whiteside.dwaa.databinding.CardViewMedicineProductBinding
-import com.whiteside.dwaa.ui.feed.FeedAdapter.ViewHolder
+import com.whiteside.dwaa.adapter.MedicinesAdapter.ViewHolder
+import com.whiteside.dwaa.ui.feed.FeedMedicine
+import com.whiteside.dwaa.ui.feed.MedicineViewModel
 import com.whiteside.dwaa.utils.time.Time
 import com.whiteside.dwaa.utils.location.LocationUtils
 import java.util.*
 
 
-class FeedAdapter(private var list: List<FeedMedicine>) : RecyclerView.Adapter<ViewHolder>() {
+class MedicinesAdapter(private var list: List<FeedMedicine>) : RecyclerView.Adapter<ViewHolder>() {
 
     class ViewHolder(val bind: CardViewMedicineProductBinding) :
         RecyclerView.ViewHolder(bind.root) {
