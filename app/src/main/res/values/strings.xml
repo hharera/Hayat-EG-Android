@@ -25,7 +25,7 @@
     <string name="title_chats">الدردشات</string>
     <string name="code_will_arrive">سيصلك كود التأكيد خلال %1$d ثانية</string>
     <string name="code_is_arriving">جاري إرسال كود التأكيد</string>
-    <string name="error_toast">Something went wrong</string>
+    <string name="error_toast">حدث خطأ ما</string>
     <string name="loading">جاري التحميل</string>
     <string name="dwaa_name">اسم الدواء</string>
     <string name="expire_date">تاريخ الانتهاء</string>
@@ -68,4 +68,8 @@
     <string name="try_again">أعد المحاولة</string>
     <string name="back_connected">معاودة الاتصال</string>
     <string name="went_disconnected">تم قطع الاتصال</string>
+    <string name="sort">ترتيب</string>
+    <string name="filter">ترشيح</string>
+    <string name="price_ascending">السعر: الاقل الي الاعلي</string>
+    <string name="price_descending">السعر: الاعلي الي الاقل</string>
 </resources>
