@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
@@ -54,5 +55,25 @@ class FirebaseMedicineRepository @Inject constructor(
             .collection(DatabasePaths.medicines)
             .limit(limit.toLong())
             .whereLessThan(FeedMedicine::price.name, underPrice)
+            .get()
+
+    override fun searchMedicines(
+        searchWord: String,
+        limit: Long,
+        orderBy: String?,
+        direction: Query.Direction?,
+    ) =
+        firestore
+            .collection(DatabasePaths.medicines)
+            .whereGreaterThanOrEqualTo(FeedMedicine::name.name, searchWord)
+            .limit(limit)
+            //TODO under testing
+            .orderBy(FeedMedicine::name.name, Query.Direction.ASCENDING)
+            .orderBy(FeedMedicine::addingTime.name, Query.Direction.DESCENDING)
+            .apply {
+                if (orderBy != null && direction != null) {
+                    orderBy(orderBy, direction)
+                }
+            }
             .get()
 }
