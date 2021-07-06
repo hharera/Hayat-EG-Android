@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.saerchfilter.SearchFilterActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:src="@drawable/arrow_back"
+                android:tint="@color/app_yellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/search_filter"
+                android:textColor="#8BFFFB"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <TextView
+        android:id="@+id/price"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginEnd="323dp"
+        android:text="@string/price"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/black"
+        app:hintEnabled="true"
+        app:icon="@drawable/price_tag"
+        app:iconGravity="start"
+        app:iconTint="@color/app_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
+
+    <TextView
+        android:id="@+id/chosen_price"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:text="0-3000"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/app_grey"
+        app:hintEnabled="true"
+        app:icon="@drawable/price_tag"
+        app:iconGravity="start"
+        app:iconTint="@color/app_yellow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/expire_date"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:text="@string/expire_date"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/app_grey"
+        app:hintEnabled="true"
+        app:icon="@drawable/expire_date"
+        app:iconGravity="start"
+        app:iconTint="@color/app_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rangeSeekBar" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/adding_time"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:text="@string/adding_time"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/app_grey"
+        app:icon="@drawable/expire_date"
+        app:iconGravity="start"
+        app:iconTint="@color/app_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expire_date" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/type"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:text="@string/type"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/app_grey"
+        app:icon="@drawable/category24"
+        app:iconGravity="start"
+        app:iconTint="@color/app_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adding_time" />
+
+    <it.sephiroth.android.library.rangeseekbar.RangeSeekBar
+        android:id="@+id/rangeSeekBar"
+        style="@style/Base.Sephiroth.Widget.RangeSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:max="3000"
+        android:progressTint="@color/app_yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price"
+        app:range_progress_endValue="3000"
+        app:range_progress_startEnd_minDiff="1"
+        app:range_progress_startValue="0" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/confirm"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:backgroundTint="@color/app_blue"
+        android:text="@string/confirm"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
