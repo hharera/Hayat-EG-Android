@@ -42,43 +42,43 @@ class SearchViewModel @Inject constructor(private val medicinesRepo: MedicineRep
         _searchSorting.value = SearchSorting(name, ascending)
     }
 
-    fun searchMedicines() {
-        _searchResult.value = Response.loading(null)
-        medicinesRepo.apply {
-            if (searchSorting.value != null && searchFilters.value != null)
-                searchMedicines(
-                    searchWord.value!!,
-                    20,
-                    searchSorting.value!!,
-                    searchFilters.value!!,
-                ).let {
-                    handleTask(it)
-                }
-            else if (searchSorting.value != null)
-                searchMedicines(
-                    searchWord.value!!,
-                    20,
-                    searchSorting.value!!,
-                ).let {
-                    handleTask(it)
-                }
-            else if (searchFilters.value != null)
-                searchMedicines(
-                    searchWord.value!!,
-                    20,
-                    searchFilters.value!!,
-                ).let {
-                    handleTask(it)
-                }
-            else
-                searchMedicines(
-                    searchWord.value!!,
-                    20,
-                ).let {
-                    handleTask(it)
-                }
-        }
-    }
+//    fun searchMedicines() {
+//        _searchResult.value = Response.loading(null)
+//        medicinesRepo.apply {
+//            if (searchSorting.value != null && searchFilters.value != null)
+//                searchMedicines(
+//                    searchWord.value!!,
+//                    20,
+//                    searchSorting.value!!.propertyName,
+//                    searchFilters.value!!.,
+//                ).let {
+//                    handleTask(it)
+//                }
+//            else if (searchSorting.value != null)
+//                searchMedicines(
+//                    searchWord.value!!,
+//                    20,
+//                    searchSorting.value!!,
+//                ).let {
+//                    handleTask(it)
+//                }
+//            else if (searchFilters.value != null)
+//                searchMedicines(
+//                    searchWord.value!!,
+//                    20,
+//                    searchFilters.value!!,
+//                ).let {
+//                    handleTask(it)
+//                }
+//            else
+//                searchMedicines(
+//                    searchWord.value!!,
+//                    20,
+//                ).let {
+//                    handleTask(it)
+//                }
+//        }
+//    }
 
     private fun handleTask(task: Task<QuerySnapshot>) {
         task.addOnSuccessListener {

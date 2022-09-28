@@ -213,7 +213,7 @@ class ChooseLocationActivity : BaseActivity(), OnMapReadyCallback {
         val geocoder = Geocoder(this)
         var list: List<Address> = ArrayList()
         try {
-            list = geocoder.getFromLocationName(searchString, 1)
+            list = geocoder.getFromLocationName(searchString, 1)?.toList() ?: emptyList()
         } catch (e: IOException) {
             handleFailure(e)
         }

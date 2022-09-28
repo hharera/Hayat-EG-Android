@@ -8,8 +8,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.whiteside.dwaa.R
 import com.whiteside.dwaa.common.ExtrasConstants
-import com.whiteside.dwaa.common.onProgressChanged
+import com.whiteside.dwaa.common.extension.onProgressChanged
 import com.whiteside.dwaa.databinding.ActivitySearchFilterBinding
+import com.whiteside.dwaa.ui.saerchfilter.utils.SEARCH_FILTERS
 import com.whiteside.dwaa.utils.time.Time
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -60,7 +61,7 @@ class SearchFilterActivity : AppCompatActivity() {
     private fun goBackWithResult() {
         val returnIntent = Intent()
         returnIntent.putExtra(
-            ExtrasConstants.SEARCH_FILTERS,
+            SEARCH_FILTERS,
             searchFilterViewModel.searchFilters.value!!
         )
         setResult(RESULT_OK, returnIntent)

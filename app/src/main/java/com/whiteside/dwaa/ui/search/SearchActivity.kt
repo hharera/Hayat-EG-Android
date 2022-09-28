@@ -37,7 +37,7 @@ class SearchActivity : BaseActivity() {
 
         setupObservers()
         setupListeners()
-        viewModel.defaultSearch()
+//        viewModel.defaultSearch()
     }
 
     private fun setupListeners() {
@@ -51,7 +51,7 @@ class SearchActivity : BaseActivity() {
 
         bind.searchBar.onSearchConfirmed {
             viewModel.setSearchWord(it)
-            viewModel.defaultSearch()
+//            viewModel.defaultSearch()
         }
     }
 
@@ -92,10 +92,10 @@ class SearchActivity : BaseActivity() {
     private fun updateSearch(typeId: Int) {
         when (typeId) {
             R.id.price_low_to_high -> {
-                viewModel.searchMedicinesWithSort(FeedMedicine::price.name, Query.Direction.ASCENDING)
+//                viewModel.searchMedicinesWithSort(FeedMedicine::price.name, Query.Direction.ASCENDING)
             }
             R.id.price_high_to_low -> {
-                viewModel.searchMedicinesWithSort(FeedMedicine::price.name, Query.Direction.DESCENDING)
+//                viewModel.searchMedicinesWithSort(FeedMedicine::price.name, Query.Direction.DESCENDING)
             }
         }
     }

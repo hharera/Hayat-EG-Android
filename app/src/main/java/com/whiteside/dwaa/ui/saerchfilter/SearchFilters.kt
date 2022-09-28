@@ -3,6 +3,7 @@ package com.whiteside.dwaa.ui.saerchfilter
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.firebase.Timestamp
+import com.whiteside.dwaa.ui.saerchfilter.model.PriceFilter
 
 data class SearchFilters(
     var priceFilter: PriceFilter?,
@@ -16,6 +17,7 @@ data class SearchFilters(
         parcel.readParcelable(Timestamp::class.java.classLoader),
         parcel.readString()
     ) {
+        
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

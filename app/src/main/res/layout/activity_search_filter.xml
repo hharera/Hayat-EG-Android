@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/search_filter"
+                android:text="Search filter"
                 android:textColor="#8BFFFB"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -98,7 +98,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
         android:layout_margin="@dimen/_10sdp"
-        android:text="@string/adding_time"
+        android:text="Adding time"
         android:textAlignment="viewEnd"
         android:textColor="@color/app_grey"
         app:icon="@drawable/expire_date"

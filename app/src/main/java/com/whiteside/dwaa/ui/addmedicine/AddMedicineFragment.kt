@@ -162,7 +162,7 @@ class AddMedicineFragment : BaseFragment() {
     }
 
     private fun updateLocation(location: LatLng) {
-        val geocoder = Geocoder(context, Locale.getDefault())
+        val geocoder = Geocoder(requireContext(), Locale.getDefault())
         try {
             bind.location.text = LocationUtils.getLocationAddressName(location, geocoder)
         } catch (e: IOException) {
