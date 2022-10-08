@@ -12,7 +12,7 @@ android {
     testOptions.unitTests.includeAndroidResources = true
 
     defaultConfig {
-        applicationId "com.whiteside.dwaa"
+        applicationId "com.harera.dwaa"
         minSdkVersion 23
         targetSdkVersion 33
         versionCode 1
@@ -37,7 +37,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.whiteside.dwaa'
+    namespace 'com.harera.dwaa'
 }
 
 dependencies {
