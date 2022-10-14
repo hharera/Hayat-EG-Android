@@ -1,6 +1,6 @@
-package com.harera.dwaa.ui.addmedicine
+package com.harera.dwaa.feature.postingdonation
 
-data class AddMedicineFormState(
+data class DonationFormState(
     val nameError : Int? = null,
     val expireDateError: Int? = null,
     val priceError : Int? = null,

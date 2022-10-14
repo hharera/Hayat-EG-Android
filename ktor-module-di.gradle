@@ -1,0 +1,9 @@
+apply plugin: 'kotlinx-serialization'
+
+dependencies {
+    api(Ktor.ktorClientAndroid)
+    api(Ktor.ktorClient)
+    api(Ktor.ktorClientSerialization)
+    api(Libs.serializer)
+    api(Ktor.ktorClientGson)
+}

@@ -1,9 +1,9 @@
 package com.harera.dwaa.di
 
 import com.harera.dwaa.network.firebase.FirebaseAuth
-import com.harera.dwaa.network.firebase.FirebaseMedicineRepository
 import com.harera.dwaa.network.repository.AuthManager
-import com.harera.dwaa.network.repository.MedicineRepository
+import com.harera.dwaa.data.repository.MedicineRepository
+import com.harera.dwaa.data.repository.MedicineRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,5 +18,5 @@ abstract class RepoModule {
     abstract fun bindAuthManager(authManager: FirebaseAuth) : AuthManager
 
     @Binds
-    abstract fun bindMedicineRepository(medicineRepository: FirebaseMedicineRepository) : MedicineRepository
+    abstract fun bindMedicineRepository(medicineRepository: MedicineRepositoryImpl) : MedicineRepository
 }

@@ -1,4 +1,4 @@
-package com.harera.dwaa.ui.addmedicine
+package com.harera.dwaa.feature.postingdonation
 
 import android.app.Activity
 import android.content.Intent
@@ -9,7 +9,6 @@ import android.widget.PopupMenu
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.mindorks.example.coroutines.utils.Status
@@ -17,8 +16,8 @@ import com.opensooq.supernova.gligar.GligarPicker
 import com.harera.dwaa.R
 import com.harera.dwaa.common.BaseFragment
 import com.harera.dwaa.common.afterTextChanged
-import com.harera.dwaa.databinding.FragmentAddMedicineBinding
 import com.harera.dwaa.common.ExtrasConstants.LOCATION_RESULT
+import com.harera.dwaa.databinding.FragmentDonationBinding
 import com.harera.dwaa.ui.location.ChooseLocationActivity
 import com.harera.dwaa.utils.BitmapUtils
 import com.harera.dwaa.utils.time.Time
@@ -29,15 +28,15 @@ import java.util.*
 
 
 @AndroidEntryPoint
-class AddMedicineFragment : BaseFragment() {
+class DonationFragment : BaseFragment() {
     companion object {
         private val CHOOSE_LOCATION_CODE: Int = 3005
         private val IMAGE_REQ_CODE = 3004
     }
 
     private lateinit var locationResult: ActivityResultLauncher<Intent>
-    private lateinit var addMedicineViewModel: AddMedicineViewModel
-    private lateinit var bind: FragmentAddMedicineBinding
+    private lateinit var donationViewModel: DonationViewModel
+    private lateinit var bind: FragmentDonationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +45,7 @@ class AddMedicineFragment : BaseFragment() {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 if (it.resultCode == Activity.RESULT_OK) {
                     val location = it.data!!.extras!![LOCATION_RESULT] as LatLng
-                    addMedicineViewModel.setLocation(location)
+                    donationViewModel.setLocation(location)
                 }
             }
     }
@@ -56,10 +55,10 @@ class AddMedicineFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        bind = FragmentAddMedicineBinding.inflate(layoutInflater)
+        bind = FragmentDonationBinding.inflate(layoutInflater)
 
-        addMedicineViewModel =
-            ViewModelProvider(this).get(AddMedicineViewModel::class.java)
+        donationViewModel =
+            ViewModelProvider(this).get(DonationViewModel::class.java)
 
         return bind.root
     }
@@ -72,29 +71,25 @@ class AddMedicineFragment : BaseFragment() {
     }
 
     private fun setupObservers() {
-        addMedicineViewModel.image.observe(viewLifecycleOwner) {
+        donationViewModel.image.observe(viewLifecycleOwner) {
             bind.image.setImageBitmap(it)
         }
 
-        addMedicineViewModel.type.observe(viewLifecycleOwner) {
-            bind.type.text = it
-        }
-
-        addMedicineViewModel.location.observe(viewLifecycleOwner) {
+        donationViewModel.location.observe(viewLifecycleOwner) {
             updateLocation(it)
         }
 
-        addMedicineViewModel.expireDate.observe(viewLifecycleOwner) {
+        donationViewModel.expireDate.observe(viewLifecycleOwner) {
             bind.expireDate.text = Time.convertTimestampToString(it)
         }
 
-        addMedicineViewModel.medicineData.observe(viewLifecycleOwner) {
+        donationViewModel.postMedicineRequest.observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.LOADING -> {
                     handleLoading(R.string.uploading_medicine)
                 }
                 Status.SUCCESS -> {
-                    addMedicineViewModel.uploadMedicineImage(it.data!!)
+                    donationViewModel.uploadMedicineImage(it.data!!)
                     handleSuccess()
                 }
                 Status.ERROR -> {
@@ -103,13 +98,13 @@ class AddMedicineFragment : BaseFragment() {
             }
         }
 
-        addMedicineViewModel.imageUrl.observe(viewLifecycleOwner) {
+        donationViewModel.imageUrl.observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.LOADING -> {
                     handleLoading(R.string.uploading_medicine)
                 }
                 Status.SUCCESS -> {
-                    addMedicineViewModel.addMedicine(it.data!!)
+                    donationViewModel.addMedicine(it.data!!)
                     handleSuccess()
                 }
                 Status.ERROR -> {
@@ -118,7 +113,7 @@ class AddMedicineFragment : BaseFragment() {
             }
         }
 
-        addMedicineViewModel.medicineUpload.observe(viewLifecycleOwner) {
+        donationViewModel.medicineUpload.observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.LOADING -> {
                     handleLoading(R.string.uploading_medicine)
@@ -132,13 +127,11 @@ class AddMedicineFragment : BaseFragment() {
             }
         }
 
-        addMedicineViewModel.medicineFormState.observe(viewLifecycleOwner) {
+        donationViewModel.medicineFormState.observe(viewLifecycleOwner) {
             bind.add.isEnabled = it.isValid
 
             if (it.nameError != null) {
                 bind.name.error = getString(it.nameError)
-            } else if (it.priceError != null) {
-                bind.price.error = getString(it.priceError)
             } else if (it.expireDateError != null) {
                 showToast(it.expireDateError)
             } else if (it.typeError != null) {
@@ -171,20 +164,16 @@ class AddMedicineFragment : BaseFragment() {
     }
 
     private fun setupListeners() {
-        bind.price.afterTextChanged {
-            addMedicineViewModel.setPrice(it)
+        bind.name.afterTextChanged {
+            donationViewModel.setName(it)
         }
 
-        bind.name.afterTextChanged {
-            addMedicineViewModel.setName(it)
+        bind.amount.afterTextChanged {
+            donationViewModel.setAmount(it)
         }
 
         bind.expireDate.setOnClickListener {
             showDatePickerDialog()
-        }
-
-        bind.type.setOnClickListener {
-            showMedicineTypeMenu(it, R.menu.types_menu)
         }
 
         bind.image.setOnClickListener {
@@ -192,18 +181,25 @@ class AddMedicineFragment : BaseFragment() {
         }
 
         bind.back.setOnClickListener {
-            findNavController().popBackStack()
+            activity?.onBackPressed()
         }
 
         bind.location.setOnClickListener {
             goToChooseLocation()
         }
 
+        bind.unit.setOnClickListener {
+            createUnitsMenu(it)
+        }
+
         bind.add.setOnClickListener {
             //TODO update view with loading until finish
             bind.add.isEnabled = false
-            addMedicineViewModel.encapsulateMedicineForm()
+            donationViewModel.encapsulateMedicineForm()
         }
+    }
+
+    private fun createUnitsMenu(it: View) {
     }
 
     private fun showDatePickerDialog() {
@@ -215,7 +211,7 @@ class AddMedicineFragment : BaseFragment() {
 
         datePicker.addOnPositiveButtonClickListener {
             val time = Time.convertCalenderSecondsToTimestamp(it)
-            addMedicineViewModel.setExpireDate(time)
+            donationViewModel.setExpireDate(time)
         }
         datePicker.show(childFragmentManager, "EXPIRE DATE")
     }
@@ -231,7 +227,19 @@ class AddMedicineFragment : BaseFragment() {
         popup.menuInflater.inflate(menu, popup.menu)
         popup.setOnMenuItemClickListener {
             val type = it.title.toString()
-            addMedicineViewModel.setMedicineType(type)
+//            donationViewModel.setMedicineType(type)
+            true
+        }
+        popup.show()
+    }
+
+    private fun showUnitsMenu(view: View, menu: Int) {
+        val popup = PopupMenu(context, view)
+
+        popup.menuInflater.inflate(menu, popup.menu)
+        popup.setOnMenuItemClickListener {
+            val unit = it.title.toString()
+            donationViewModel.setUnit(unit)
             true
         }
         popup.show()
@@ -251,7 +259,7 @@ class AddMedicineFragment : BaseFragment() {
         if (data != null && resultCode == Activity.RESULT_OK && requestCode == IMAGE_REQ_CODE) {
             val imageBitmap = BitmapUtils.convertImagePathToBitmap(data)
             imageBitmap?.let {
-                addMedicineViewModel.setImage(it)
+                donationViewModel.setImage(it)
             }
         }
     }

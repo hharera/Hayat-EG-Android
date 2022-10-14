@@ -1,4 +1,4 @@
-package com.harera.dwaa.network.firebase
+package com.harera.dwaa.data.repository
 
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
@@ -9,23 +9,22 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import com.harera.dwaa.common.DatabasePaths
-import com.harera.dwaa.model.MedicineData
-import com.harera.dwaa.network.repository.MedicineRepository
+import com.harera.dwaa.data.service.domain.PostMedicineRequest
 import com.harera.dwaa.ui.feed.FeedMedicine
 import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
 
-class FirebaseMedicineRepository @Inject constructor(
-    val firestore: FirebaseFirestore,
-    val firebaseStorage: FirebaseStorage
+class MedicineRepositoryImpl @Inject constructor(
+    private val firestore: FirebaseFirestore,
+    private val firebaseStorage: FirebaseStorage
 ) : MedicineRepository {
 
-    override fun addMedicine(medicineData: MedicineData) =
+    override fun insertDonationPost(postMedicineRequest: PostMedicineRequest) =
         firestore
             .collection(DatabasePaths.medicines)
-            .document(medicineData.id)
-            .set(medicineData)
+            .document(postMedicineRequest.id)
+            .set(postMedicineRequest)
 
     override fun getNewMedicineId(medicineCategory: String) =
         firestore

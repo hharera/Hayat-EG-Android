@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_add_medicine"
-        android:name="com.harera.dwaa.ui.addmedicine.AddMedicineFragment"
+        android:name="com.harera.dwaa.feature.postingdonation.DonationFragment"
         android:label="@string/title_add_medicine"
-        tools:layout="@layout/fragment_add_medicine" />
+        tools:layout="@layout/fragment_donation" />
 </navigation>

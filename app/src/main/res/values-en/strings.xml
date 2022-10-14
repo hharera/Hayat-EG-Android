@@ -73,6 +73,6 @@
     <string name="price_ascending">السعر: الاقل الي الاعلي</string>
     <string name="price_descending">السعر: الاعلي الي الاقل</string>
     <string name="choose_medicine_add_date">اختر تاريخ اضافة الدواء</string>
-    <string name="amount">الكمية</string>
-    <string name="unit">الوحدة</string>
+    <string name="amount">Amount</string>
+    <string name="unit">Unit</string>
 </resources>

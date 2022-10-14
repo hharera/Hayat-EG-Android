@@ -1,11 +1,11 @@
-package com.harera.dwaa.model
+package com.harera.dwaa.data.service.domain
 
 import android.graphics.Bitmap
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.Exclude
 
-data class MedicineData(
+data class PostMedicineRequest(
     val name: String,
     val id: String,
     val uid: String,

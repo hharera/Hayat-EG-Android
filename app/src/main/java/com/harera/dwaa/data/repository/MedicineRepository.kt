@@ -1,15 +1,15 @@
-package com.harera.dwaa.network.repository
+package com.harera.dwaa.data.repository
 
 import android.graphics.Bitmap
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.UploadTask
-import com.harera.dwaa.model.MedicineData
+import com.harera.dwaa.data.service.domain.PostMedicineRequest
 
 interface MedicineRepository {
 
-    fun addMedicine(medicineData: MedicineData): Task<Void>
+    fun insertDonationPost(postMedicineRequest: PostMedicineRequest): Task<Void>
     fun getNewMedicineId(medicineCategory: String): String
     fun uploadMedicineImage(image: Bitmap, medicineCategory: String, medicineId: String): UploadTask
     fun getMedicines(limit: Int, underPrice: Float): Task<QuerySnapshot>

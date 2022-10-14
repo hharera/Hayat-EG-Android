@@ -1,4 +1,4 @@
-package com.harera.dwaa.ui.addmedicine
+package com.harera.dwaa.feature.postingdonation
 
 import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
@@ -8,20 +8,18 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.Timestamp
 import com.mindorks.example.coroutines.utils.Response
 import com.harera.dwaa.R
-import com.harera.dwaa.model.MedicineData
+import com.harera.dwaa.data.domain.Unit
+import com.harera.dwaa.data.service.domain.PostMedicineRequest
 import com.harera.dwaa.network.repository.AuthManager
-import com.harera.dwaa.network.repository.MedicineRepository
+import com.harera.dwaa.data.repository.MedicineRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class AddMedicineViewModel @Inject constructor(
+class DonationViewModel @Inject constructor(
     private val authManager: AuthManager,
     private val medicineRepository: MedicineRepository
 ) : ViewModel() {
-
-    private val _price: MutableLiveData<String> = MutableLiveData()
-    val price: LiveData<String> = _price
 
     private val _name: MutableLiveData<String> = MutableLiveData()
     val name: LiveData<String> = _name
@@ -29,8 +27,11 @@ class AddMedicineViewModel @Inject constructor(
     private val _expireDate: MutableLiveData<Timestamp> = MutableLiveData()
     val expireDate: LiveData<Timestamp> = _expireDate
 
-    private val _type: MutableLiveData<String> = MutableLiveData()
-    val type: LiveData<String> = _type
+    private val _amount: MutableLiveData<String> = MutableLiveData()
+    val amount: LiveData<String> = _amount
+
+    private val _unit: MutableLiveData<String> = MutableLiveData()
+    val unit: LiveData<String> = _unit
 
     private val _image: MutableLiveData<Bitmap> = MutableLiveData()
     val image: LiveData<Bitmap> = _image
@@ -41,26 +42,21 @@ class AddMedicineViewModel @Inject constructor(
     private val _imageUrl: MutableLiveData<Response<String>> = MutableLiveData()
     val imageUrl: LiveData<Response<String>> = _imageUrl
 
-//    //TODO observe
-//    private val _error: MutableLiveData<Exception> = MutableLiveData()
-//    val error: LiveData<Exception> = _error
-//
-//    //TODO observe
-//    private val _loading: MutableLiveData<Any?> = MutableLiveData()
-//    val loading: LiveData<Any?> = _loading
+    private val _medicineFormState: MutableLiveData<DonationFormState> =
+        MutableLiveData(DonationFormState())
+    val medicineFormState: LiveData<DonationFormState> = _medicineFormState
 
-    private val _medicineFormState: MutableLiveData<AddMedicineFormState> =
-        MutableLiveData(AddMedicineFormState())
-    val medicineFormState: LiveData<AddMedicineFormState> = _medicineFormState
-
-    private val _medicineData: MutableLiveData<Response<MedicineData>> = MutableLiveData()
-    val medicineData: LiveData<Response<MedicineData>> = _medicineData
+    private val _Post_medicineRequest: MutableLiveData<Response<PostMedicineRequest>> = MutableLiveData()
+    val postMedicineRequest: LiveData<Response<PostMedicineRequest>> = _Post_medicineRequest
 
     private val _medicineUpload: MutableLiveData<Response<Any>> = MutableLiveData()
     val medicineUpload: LiveData<Response<Any>> = _medicineUpload
 
-    fun setPrice(price: String) {
-        _price.value = price
+    private val _unitList: MutableLiveData<List<Unit>> = MutableLiveData()
+    val unitList: LiveData<List<Unit>> = _unitList
+
+    fun setUnit(unit: String) {
+        _unit.value = unit
         checkFormValidity()
     }
 
@@ -79,8 +75,8 @@ class AddMedicineViewModel @Inject constructor(
         checkFormValidity()
     }
 
-    fun setMedicineType(type: String) {
-        _type.value = type
+    fun setAmount(it: String) {
+        _amount.value = it
         checkFormValidity()
     }
 
@@ -91,28 +87,24 @@ class AddMedicineViewModel @Inject constructor(
 
     private fun checkFormValidity() {
         if (_name.value == null || _name.value!!.isBlank()) {
-            _medicineFormState.value = AddMedicineFormState(nameError = R.string.empty_name_error)
-        } else if (_price.value == null || _price.value!!.isBlank()) {
-            _medicineFormState.value = AddMedicineFormState(priceError = R.string.empty_price_state)
+            _medicineFormState.value = DonationFormState(nameError = R.string.empty_name_error)
         } else if (_expireDate.value == null) {
             _medicineFormState.value =
-                AddMedicineFormState(expireDateError = R.string.empty_exprie_date_error)
-        } else if (_type.value == null) {
-            _medicineFormState.value = AddMedicineFormState(typeError = R.string.empty_type_state)
+                DonationFormState(expireDateError = R.string.empty_exprie_date_error)
         } else if (_location.value == null) {
             _medicineFormState.value =
-                AddMedicineFormState(typeError = R.string.empty_location_error)
+                DonationFormState(typeError = R.string.empty_location_error)
         } else if (_image.value == null) {
-            _medicineFormState.value = AddMedicineFormState(typeError = R.string.empty_image_error)
+            _medicineFormState.value = DonationFormState(typeError = R.string.empty_image_error)
         } else {
-            _medicineFormState.value = AddMedicineFormState(isValid = true)
+            _medicineFormState.value = DonationFormState(isValid = true)
         }
     }
 
     fun addMedicine(url: String) {
         _medicineUpload.value = Response.loading(null)
-        medicineRepository.addMedicine(
-            medicineData.value!!.data!!.apply {
+        medicineRepository.insertDonationPost(
+            postMedicineRequest.value!!.data!!.apply {
                 imageUrl = url
             })
             .addOnSuccessListener {
@@ -123,12 +115,12 @@ class AddMedicineViewModel @Inject constructor(
             }
     }
 
-    fun uploadMedicineImage(medicineData: MedicineData) {
+    fun uploadMedicineImage(postMedicineRequest: PostMedicineRequest) {
         _imageUrl.value = Response.loading(null)
         medicineRepository.uploadMedicineImage(
-            medicineData.image,
-            medicineData.category,
-            medicineData.id
+            postMedicineRequest.image,
+            postMedicineRequest.category,
+            postMedicineRequest.id
         )
             .addOnSuccessListener {
                 it.storage.downloadUrl.addOnSuccessListener {
@@ -140,21 +132,21 @@ class AddMedicineViewModel @Inject constructor(
     }
 
     fun encapsulateMedicineForm() {
-        _medicineData.value = Response.loading(null)
+        _Post_medicineRequest.value = Response.loading(null)
 
-        val medicineId = medicineRepository.getNewMedicineId(type.value!!)
-        _medicineData.value = Response.success(
-            MedicineData(
-                name = name.value!!,
-                expireDate = expireDate.value!!,
-                addingTime = Timestamp.now(),
-                price = price.value!!.toFloat(),
-                uid = authManager.getCurrentUser()!!.uid,
-                location = location.value!!,
-                category = type.value!!,
-                image = image.value!!,
-                id = medicineId
-            )
-        )
+//        val medicineId = medicineRepository.getNewMedicineId(type.value!!)
+//        _Post_medicineRequest.value = Response.success(
+//            PostMedicineRequest(
+//                name = name.value!!,
+//                expireDate = expireDate.value!!,
+//                addingTime = Timestamp.now(),
+//                price = price.value!!.toFloat(),
+//                uid = authManager.getCurrentUser()!!.uid,
+//                location = location.value!!,
+//                category = type.value!!,
+//                image = image.value!!,
+//                id = medicineId
+//            )
+//        )
     }
 }
