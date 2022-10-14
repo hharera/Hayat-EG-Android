@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Dwaa" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.App" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/app_yellow</item>
         <item name="colorPrimaryVariant">#FAD223</item>
         <item name="colorPrimaryDark">#DCBE0F</item>
@@ -8,5 +8,12 @@
         <item name="android:textColorPrimary">@color/white</item>
         <item name="colorSurface">#F1F0F2</item>
         <item name="colorOnPrimary">#DCDCDC</item>
+    </style>
+
+    <style name="Theme.App.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/windowSplashScreenBackground</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/icon</item>
+        <item name="windowSplashScreenAnimationDuration">1200</item>
+        <item name="postSplashScreenTheme">@style/Theme.App</item>
     </style>
 </resources>

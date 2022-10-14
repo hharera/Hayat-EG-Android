@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dwaa</string>
+    <string name="app_name">حياة</string>
     <string name="company_name">WHITESIED DEV</string>
     <string name="login">تسجيل الدخول</string>
     <string name="privacy_policy">لقد قرأت  نص الخصوصية والأمان وأوافق عليه</string>
@@ -75,4 +75,5 @@
     <string name="choose_medicine_add_date">اختر تاريخ اضافة الدواء</string>
     <string name="amount">الكمية</string>
     <string name="unit">الوحدة</string>
+    <string name="hayat_eg">HAYAT EG</string>
 </resources>

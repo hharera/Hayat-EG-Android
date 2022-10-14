@@ -16,39 +16,46 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Dwaa">
+        android:theme="@style/Theme.App">
+
         <activity
-            android:exported="true"
             android:name=".ui.search.SearchActivity"
+            android:exported="true"
             android:theme="@style/Home" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:exported="true"
             android:name=".ui.home.HomeActivity"
+            android:exported="true"
             android:theme="@style/Home" />
+
         <activity
-            android:exported="true"
-            android:name=".ui.login.LoginActivity" />
+            android:name=".ui.login.LoginActivity"
+            android:exported="true" />
+
         <activity
-            android:exported="true"
-            android:name=".ui.location.ChooseLocationActivity" />
+            android:name=".ui.location.ChooseLocationActivity"
+            android:exported="true" />
+
         <activity
-            android:exported="true"
-            android:name=".ui.login.confirm.ConfirmLoginActivity" />
+            android:name=".ui.login.confirm.ConfirmLoginActivity"
+            android:exported="true" />
+
         <activity
-            android:exported="true"
-            android:name=".ui.connection.NoInternetConnection" />
+            android:name=".ui.connection.NoInternetConnection"
+            android:exported="true" />
+
         <activity
+            android:name=".SplashActivity"
             android:exported="true"
-            android:name=".MainActivity"
-            android:theme="@style/Splash">
+            android:theme="@style/Theme.App.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

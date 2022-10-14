@@ -1,41 +1,39 @@
 package com.harera.dwaa
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
+import com.google.api.LogDescriptor
 import com.harera.dwaa.common.BaseActivity
-import com.harera.dwaa.databinding.ActivityMainBinding
+import com.harera.dwaa.databinding.ActivitySplashBinding
 import com.harera.dwaa.network.repository.AuthManager
 import com.harera.dwaa.ui.home.HomeActivity
 import com.harera.dwaa.ui.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class SplashActivity : BaseActivity() {
 
-    lateinit var bind: ActivityMainBinding
+    companion object {
+        private const val TAG = "SplashActivity"
+    }
 
-    @Inject
-    lateinit var authManager: AuthManager
+    lateinit var bind: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bind = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(bind.root)
+        val splashScreen = installSplashScreen()
+        splashScreen.setKeepOnScreenCondition { true }
 
-        //TODO remove comment after development
-        goToHomeActivity()
-//        GlobalScope.launch(Dispatchers.Main) {
-//            delay(3000)
-//            check()
-//        }
-    }
-
-    private fun checkLogin() {
-        if (authManager.getCurrentUser() != null) {
+        lifecycleScope.launchWhenCreated {
+            delay(2000)
             goToHomeActivity()
-        } else {
-            goToLoginActivity()
         }
     }
 

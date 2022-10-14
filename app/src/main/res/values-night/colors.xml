@@ -18,5 +18,4 @@
     <color name="color_box_stroke_default">#61000000</color>
     <color name="colorPrimary">#61000000</color>
     <color name="colorSecondry">#20ADDC</color>
-    <color name="windowSplashScreenBackground">@color/white</color>
 </resources>
