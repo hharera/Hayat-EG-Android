@@ -63,7 +63,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/amountTL"
-            style="@style/Style.Dwaa.TextInputLayout.OutlinedBox"
+            style="@style/Style.App.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="23dp"
@@ -84,7 +84,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutName"
-            style="@style/Style.Dwaa.TextInputLayout.OutlinedBox"
+            style="@style/Style.App.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="23dp"

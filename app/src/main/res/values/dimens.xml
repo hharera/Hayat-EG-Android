@@ -3,4 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="item_view_space">8dp</dimen>
+    <dimen name="outlined_corner_radius">8dp</dimen>
+    <dimen name="corner_radius_default">8dp</dimen>
+    <dimen name="filled_button_elevation">0dp</dimen>
 </resources>

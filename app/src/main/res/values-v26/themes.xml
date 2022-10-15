@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Style.App.TextView.Title" parent="Theme.App">
+        <item name="android:layout_marginHorizontal">23dp</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/title_color</item>
+        <item name="android:fontFamily">@font/pt_sans_bold</item>
+    </style>
+</resources>

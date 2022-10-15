@@ -12,7 +12,7 @@ android {
     testOptions.unitTests.includeAndroidResources = true
 
     defaultConfig {
-        applicationId "com.harera.dwaa"
+        applicationId "com.harera.hayat"
         minSdkVersion 23
         targetSdkVersion 33
         versionCode 1
@@ -37,7 +37,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.harera.dwaa'
+    namespace 'com.harera.hayat'
 }
 
 dependencies {

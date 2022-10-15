@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.App" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -24,9 +25,54 @@
         <item name="boxStrokeColor">@color/outlined_text_input_stroke_color</item>
     </style>
 
-    <style name="Style.Dwaa.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="Style.App.TextView.Title" parent="Theme.App">
+        <item name="android:layout_marginHorizontal">23dp</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/title_color</item>
+        <item name="android:fontFamily">@font/pt_sans_bold</item>
+    </style>
+
+    <style name="Style.App.TextView.Placeholder" parent="Theme.App">
+        <item name="android:layout_marginHorizontal">23dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/placeholder_color</item>
+        <item name="android:fontFamily">@font/pt_sans_regular</item>
+    </style>
+
+    <style name="Style.App.Button.Filled" parent="Theme.App">
+        <item name="cornerRadius">@dimen/corner_radius_default</item>
+        <item name="elevation">@dimen/filled_button_elevation</item>
+        <item name="android:textColor">@color/filled_button_text_color</item>
+        <item name="backgroundTint">@color/filled_button_background</item>
+    </style>
+
+    <style name="Style.App.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_marginHorizontal">23dp</item>
+
         <item name="strokeColor">@color/outlined_text_input_stroke_color</item>
+
+        <!--box stroke-->
+        <item name="boxStrokeWidth">1dp</item>
         <item name="boxStrokeColor">@color/outlined_text_input_stroke_color</item>
+
+        <!--box background-->
+        <item name="boxBackgroundColor">@color/outlined_text_input_layout_background_color</item>
+
+        <!--box corner-->
+        <item name="boxCornerRadiusBottomEnd">@dimen/outlined_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/outlined_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/outlined_corner_radius</item>
+        <item name="boxCornerRadiusTopStart">@dimen/outlined_corner_radius</item>
+    </style>
+
+    <style name="Theme.App.Fragment" parent="Theme.App">
+        <item name="android:background">@color/fragment_background</item>
+    </style>
+
+    <style name="Theme.App.Activity" parent="Theme.App">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:background">@color/fragment_background</item>
     </style>
 
     <style name="Splash" parent="Theme.App">

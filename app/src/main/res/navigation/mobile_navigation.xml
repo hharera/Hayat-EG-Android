@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_feed"
-        android:name="com.harera.dwaa.ui.feed.FeedFragment"
+        android:name="com.harera.hayat.ui.feed.FeedFragment"
         android:label="@string/title_feed"
         tools:layout="@layout/fragment_feed" />
 
     <fragment
         android:id="@+id/navigation_chats"
-        android:name="com.harera.dwaa.ui.chats.ChatsFragment"
+        android:name="com.harera.hayat.ui.chats.ChatsFragment"
         android:label="@string/title_chats"
         tools:layout="@layout/fragment_chats" />
 
     <fragment
         android:id="@+id/navigation_categories"
-        android:name="com.harera.dwaa.ui.categories.CategoriesFragment"
+        android:name="com.harera.hayat.ui.categories.CategoriesFragment"
         android:label="@string/title_categories"
         tools:layout="@layout/fragment_categories" />
 
     <fragment
         android:id="@+id/navigation_add_medicine"
-        android:name="com.harera.dwaa.feature.postingdonation.DonationFragment"
+        android:name="com.harera.hayat.feature.postingdonation.DonationFragment"
         android:label="@string/title_add_medicine"
         tools:layout="@layout/fragment_donation" />
 </navigation>

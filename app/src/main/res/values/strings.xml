@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">حياة</string>
+    <string name="app_name">حـــيـــاه</string>
     <string name="company_name">WHITESIED DEV</string>
     <string name="login">تسجيل الدخول</string>
     <string name="privacy_policy">لقد قرأت  نص الخصوصية والأمان وأوافق عليه</string>
@@ -76,4 +76,16 @@
     <string name="amount">الكمية</string>
     <string name="unit">الوحدة</string>
     <string name="hayat_eg">HAYAT EG</string>
+    <string name="username_placeholder">Email, Username, or Phone Number</string>
+    <string name="username_example">eg. mohamed-ahmed, 01XX-XXX-XXXX</string>
+    <string name="password_example">************</string>
+    <string name="password_placeholder">Password</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="not_have_account">Not have an account?</string>
+    <string name="signup">Signup</string>
+    <string name="empty_username">Email, Username, or Phone Number is required</string>
+    <string name="error_invalid_username">Invalid Identity</string>
+    <string name="error_empty_password">Password is required</string>
+    <string name="error_invalid_password">Invalid password</string>
+    <string name="title_login">Login</string>
 </resources>
