@@ -25,6 +25,10 @@
         <item name="boxStrokeColor">@color/outlined_text_input_stroke_color</item>
     </style>
 
+    <style name="Style.App.ImageView" parent="Theme.App">
+        <item name="android:layout_marginHorizontal">23dp</item>
+    </style>
+
     <style name="Style.App.TextView.Title" parent="Theme.App">
         <item name="android:layout_marginHorizontal">23dp</item>
         <item name="android:textSize">32sp</item>
@@ -35,11 +39,11 @@
     <style name="Style.App.TextView.Placeholder" parent="Theme.App">
         <item name="android:layout_marginHorizontal">23dp</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/placeholder_color</item>
+        <item name="android:textColor">@color/text_color_placeholder</item>
         <item name="android:fontFamily">@font/pt_sans_regular</item>
     </style>
 
-    <style name="Style.App.Button.Filled" parent="Theme.App">
+    <style name="Style.App.Button.Filled" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="cornerRadius">@dimen/corner_radius_default</item>
         <item name="elevation">@dimen/filled_button_elevation</item>
         <item name="android:textColor">@color/filled_button_text_color</item>
@@ -106,4 +110,6 @@
         <item name="android:focusableInTouchMode">true</item>
         <item name="android:scrollHorizontally">true</item>
     </style>
+
+    <color name="text_color_placeholder">#303030</color>
 </resources>

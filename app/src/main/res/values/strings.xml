@@ -88,4 +88,8 @@
     <string name="error_empty_password">Password is required</string>
     <string name="error_invalid_password">Invalid password</string>
     <string name="title_login">Login</string>
+    <string name="forget_password_placeholder">Please enter your identity to send a confirmation code</string>
+    <string name="proceed">Proceed</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="email_or_phone_number">Email or Phone Number</string>
 </resources>
