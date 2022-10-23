@@ -10,10 +10,7 @@
         <item name="colorOnPrimary">#DCDCDC</item>
     </style>
 
-    <style name="Theme.App.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/windowSplashScreenBackground</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/icon</item>
-        <item name="windowSplashScreenAnimationDuration">1200</item>
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen.IconBackground">
         <item name="postSplashScreenTheme">@style/Theme.App</item>
     </style>
 </resources>
