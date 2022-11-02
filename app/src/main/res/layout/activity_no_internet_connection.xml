@@ -37,7 +37,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:fontFamily="@font/el_messiri_semibold"
         android:text="@string/try_again"
         android:textColor="@color/black"
         android:textSize="20sp"

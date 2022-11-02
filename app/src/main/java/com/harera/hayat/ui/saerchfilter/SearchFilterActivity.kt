@@ -104,15 +104,7 @@ class SearchFilterActivity : AppCompatActivity() {
     }
 
     private fun showMedicineTypeMenu() {
-        val popup = PopupMenu(this, bind.type)
 
-        popup.menuInflater.inflate(R.menu.types_menu, popup.menu)
-        popup.setOnMenuItemClickListener {
-            val type = it.title.toString()
-            searchFilterViewModel.setMedicineType(type)
-            true
-        }
-        popup.show()
     }
 
     private fun showAddDatePickerDialog() {

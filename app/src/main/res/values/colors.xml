@@ -28,4 +28,6 @@
     <color name="filled_button_text_color">#FFFFFF</color>
     <color name="filled_button_background">@color/colorPrimary</color>
     <color name="background_line_color">#303030</color>
+    <color name="colorControlNormal">#303030</color>
+    <color name="colorControlActivated">#303030</color>
 </resources>

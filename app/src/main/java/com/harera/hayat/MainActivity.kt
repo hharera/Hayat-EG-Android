@@ -1,6 +1,7 @@
 package com.harera.hayat
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
@@ -12,19 +13,40 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
-class SplashActivity : BaseActivity() {
+class MainActivity : BaseActivity() {
 
     companion object {
         private const val TAG = "SplashActivity"
     }
 
-    lateinit var bind: ActivitySplashBinding
+    private lateinit var bind: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val splashScreen = installSplashScreen()
-        splashScreen.setKeepOnScreenCondition { true }
 
+        val splashScreen = installSplashScreen()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            splashScreen.apply {
+                setKeepOnScreenCondition {
+                    true
+                }
+                setOnExitAnimationListener { splashScreenViewProvider ->
+                    splashScreenViewProvider.view
+                        .animate()
+                        .alpha(0f)
+                        .setDuration(1000)
+                        .withEndAction {
+                            splashScreenViewProvider.remove()
+                        }
+                }
+            }
+        } else {
+            setContentView(R.layout.activity_splash)
+            setupAnimation()
+        }
+    }
+
+    private fun setupAnimation() {
         lifecycleScope.launchWhenCreated {
             delay(2000)
             goToLoginActivity()
