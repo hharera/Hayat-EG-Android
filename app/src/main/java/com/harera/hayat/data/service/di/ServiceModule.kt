@@ -1,6 +1,7 @@
 package com.harera.hayat.data.service.di
 
 import com.harera.hayat.data.service.*
+import com.harera.hayat.data.service.impl.UserServiceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,4 +19,7 @@ abstract class ServiceModule {
 
     @Binds
     abstract fun bindUnitService(unitService: UnitServiceImpl): UnitService
+
+    @Binds
+    abstract fun bindUserService(userService: UserServiceImpl): UserService
 }

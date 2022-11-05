@@ -1,10 +1,11 @@
-package com.harera.hayat
+package com.harera.hayat.feature.splash
 
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
+import com.harera.hayat.R
 import com.harera.hayat.common.BaseActivity
 import com.harera.hayat.databinding.ActivitySplashBinding
 import com.harera.hayat.ui.home.HomeActivity
@@ -13,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class SplashActivity : BaseActivity() {
 
     companion object {
         private const val TAG = "SplashActivity"
@@ -38,6 +39,7 @@ class MainActivity : BaseActivity() {
                         .withEndAction {
                             splashScreenViewProvider.remove()
                         }
+
                 }
             }
         } else {
